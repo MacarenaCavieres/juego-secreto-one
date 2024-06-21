@@ -1,4 +1,5 @@
 const numRandom = randomNumber();
+let intentos = 1;
 
 function signText(element, text) {
     const htmlElement = document.querySelector(element);
@@ -7,7 +8,19 @@ function signText(element, text) {
 }
 
 function userTry() {
-    console.log("funcionando");
+    const userNumber = parseInt(document.querySelector("#userValue").value);
+    if (userNumber === numRandom) {
+        signText(
+            ".texto__parrafo",
+            `Acertaste el número en ${intentos} ${intentos === 1 ? "intento" : "intentos"} `
+        );
+    } else if (userNumber > numRandom) {
+        signText(".texto__parrafo", "SkyNet eligio un número menor");
+        intentos++;
+    } else {
+        signText(".texto__parrafo", "SkyNet eligio un número mayor");
+        intentos++;
+    }
 }
 
 function randomNumber() {

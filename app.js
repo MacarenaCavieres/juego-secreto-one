@@ -1,4 +1,4 @@
-let numRandom = randomNumber();
+let arrayNums = [];
 let intentos = 1;
 
 function signText(element, text) {
@@ -48,7 +48,20 @@ function cleanInput() {
 }
 
 function randomNumber() {
-    return Math.floor(Math.random() * 10) + 1;
+    const num = Math.floor(Math.random() * 10) + 1;
+    console.log(num);
+    const index = arrayNums.findIndex((item) => item === num);
+    console.log(arrayNums);
+    if (arrayNums.length === 10) {
+        signText(".texto__parrafo", "Se sortearon todos los números");
+    } else {
+        if (index === -1) {
+            arrayNums.push(num);
+            return num;
+        } else {
+            return randomNumber();
+        }
+    }
 }
 
 initCondit();

@@ -48,12 +48,14 @@ function cleanInput() {
 }
 
 function randomNumber() {
+    const btnTry = document.querySelector("#intentar");
     const num = Math.floor(Math.random() * 10) + 1;
     console.log(num);
     const index = arrayNums.findIndex((item) => item === num);
     console.log(arrayNums);
     if (arrayNums.length === 10) {
-        signText(".texto__parrafo", "Se sortearon todos los números");
+        signText(".texto__parrafo", "SkyNet se quedo sin números, refresque para comenzar a jugar de nuevo");
+        btnTry.setAttribute("disabled", "");
     } else {
         if (index === -1) {
             arrayNums.push(num);
